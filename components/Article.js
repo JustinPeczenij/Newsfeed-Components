@@ -89,6 +89,9 @@ const data = [
   }
 ];
 
+//Grab the parent element
+const newsfeed = document.querySelector('.articles')
+
 function articleMaker( {title, date, firstParagraph, secondParagraph, thirdParagraph} ){
   // Create elements for an article
   const article = document.createElement('div');
@@ -119,9 +122,21 @@ function articleMaker( {title, date, firstParagraph, secondParagraph, thirdParag
   articleText2.textContent = secondParagraph;
   articleText3.textContent = thirdParagraph;
   expandButton.textContent = '+';
-  console.log(article)
+  // Add function to out expandButton  
+  expandButton.addEventListener('click', (event) => {
+    article.classList.toggle('article-open');
+  })
+  // Append article to the Newsfeed
+  newsfeed.appendChild(article)
+  return article
 }
-articleMaker(data);
+
+data.forEach(item =>{
+  const article = articleMaker(item)
+  newsfeed.appendChild(article)
+})
+
+articleMaker(data[1]);
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
