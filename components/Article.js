@@ -123,20 +123,31 @@ function articleMaker( {title, date, firstParagraph, secondParagraph, thirdParag
   articleText3.textContent = thirdParagraph;
   expandButton.textContent = '+';
   // Add function to out expandButton  
-  expandButton.addEventListener('click', (event) => {
+  expandButton.addEventListener('click', () => {
     article.classList.toggle('article-open');
   })
   // Append article to the Newsfeed
-  newsfeed.appendChild(article)
-  return article
-}
+  newsfeed.appendChild(article);
+  
+  return article;
+} 
 
+//Add a new object to the array
+data.push({
+  title: 'Badooshki Badow Pop Pop',
+  date: 'March 10th, 2021',
+  firstParagraph: 'Bow bow bang!',
+  secondParagraph: 'Ssssssssskapow!',
+  thirdParagraph: 'Get out of the crossfire!',
+})
+
+//Loop over the data and append to the newsFeed
 data.forEach(item =>{
   const article = articleMaker(item)
   newsfeed.appendChild(article)
 })
 
-articleMaker(data[1]);
+
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
